@@ -46,6 +46,7 @@ namespace GeometricFigures
             Console.WriteLine($"Total Perimeter = {fig1.Perimeter() + fig3.Perimeter() + fig4.Perimeter()}");
             Console.WriteLine($"Total Square = {fig1.Square() + fig3.Square() + fig4.Square()}");
 
+
             Console.ReadKey();
         }
     }
