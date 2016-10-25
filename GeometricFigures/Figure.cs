@@ -6,24 +6,26 @@ using System.Threading.Tasks;
 
 namespace GeometricFigures
 {
-    class Figure
+    public abstract class Figure
     {
-        public string Color;
+        public string Color { get; set; }
 
-        public Figure()
+        public abstract string Name { get; }
+
+        protected Figure()
         {
             Color = "";
         }
-        public virtual double Square()
-        {
-            double result = 1;
-            return result;
-        }
 
-        public virtual double Perimeter()
+        public abstract double Square();
+
+
+        public abstract double Perimeter();
+
+        public override string ToString()
         {
-            double p = 1;
-            return p;
+            return $"{Name}:{Color}";
         }
     }
+
 }

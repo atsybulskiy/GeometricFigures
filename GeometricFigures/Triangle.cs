@@ -19,6 +19,8 @@ namespace GeometricFigures
             this.c = c;
         }
 
+        public override string Name => "Треугольник";
+
         public override double Square()
         {
             double p = (a+b+c)/2d;

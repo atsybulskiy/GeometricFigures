@@ -15,14 +15,24 @@ namespace GeometricFigures
             this.radius = radius;
         }
 
-        public override double Square()
+        public override string Name
         {
-            return Math.PI*Math.Pow(radius, 2);
+            get { return "Окружность"; }
         }
 
-        public override double Perimeter()
+        public override
+        double Square()
         {
-            return 2*Math.PI*radius;
+            return
+            Math.PI * Math.Pow(radius, 2);
+        }
+
+        public override
+
+        double Perimeter()
+        {
+            return 2 *
+            Math.PI * radius;
         }
     }
 }

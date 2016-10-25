@@ -16,6 +16,9 @@ namespace GeometricFigures
             a = sideA;
             b = sideB;
         }
+
+        public override string Name => "Прямоугольник";
+
         public override double Square()
         {
             return a * b;
@@ -23,7 +26,7 @@ namespace GeometricFigures
 
         public override double Perimeter()
         {
-            return (a + b)*2;
+            return (a + b) * 2;
         }
     }
 }
