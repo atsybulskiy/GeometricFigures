@@ -8,48 +8,6 @@ namespace GeometricFigures
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Rectangle, Int: A, B: ");
-            //var a = Int32.Parse(Console.ReadLine());
-            //var b = Int32.Parse(Console.ReadLine());
-
-            //Rectangle rect = new Rectangle(a, b);
-            //Figure fig1 = rect;
-            ////Figure fig2 = new Figure(); 
-
-            //Console.WriteLine("Triangle, Int: A, B, C: ");
-            //a = Int32.Parse(Console.ReadLine());
-            //b = Int32.Parse(Console.ReadLine());
-            //var c= Int32.Parse(Console.ReadLine());
-
-            //Triangle triang = new Triangle(a,b,c);
-            //Figure fig3 = triang;
-
-            //Console.WriteLine("Circle, Int: R: ");
-            //var r = Int32.Parse(Console.ReadLine());
-            //Circle circ = new Circle(r);
-            //Figure fig4 = circ;
-
-
-
-            // Rectangle
-            var fig1 = new Rectangle(2, 5);
-            Console.WriteLine($"Rectangle Square = {fig1.Square()}");
-            Console.WriteLine($"Rectangle Perimeter = {fig1.Perimeter()}");
-            fig1.Color = "Желтый";
-
-            // Triangle
-            var fig3 = new Triangle(2, 2, 2);
-            Console.WriteLine($"Triange Square = {fig3.Square()}" + fig3);
-            Console.WriteLine($"Triange Perimeter = {fig3.Perimeter()}");
-
-            // Circle
-            var fig4 = new Circle(6);
-            Console.WriteLine($"Circle Square = {fig4.Square()}");
-            Console.WriteLine($"Circle Perimeter = {fig4.Perimeter()}");
-
-            Console.WriteLine($"Total Perimeter = {fig1.Perimeter() + fig3.Perimeter() + fig4.Perimeter()}");
-            Console.WriteLine($"Total Square = {fig1.Square() + fig3.Square() + fig4.Square()}");
-
             var figures = new List<Figure>();
             figures.Add(new Rectangle(1, 2));
             figures.Add(new Circle(1));
@@ -59,16 +17,41 @@ namespace GeometricFigures
             Console.WriteLine("SPerimeter:" + sPerimeter);
 
             var rnd = new Random((int)DateTime.UtcNow.Ticks);
-            for (int i = 0; i < 5; i++)
+
+            var arrFigures = new Figure[3, 5];
+            for (int i = 0; i < arrFigures.GetLength(0); i++)
             {
-                Console.WriteLine($"Random rect   = {rnd.Next(5, 10)}");
-                Console.WriteLine($"Random treang = {rnd.Next(2, 5)}");
-                Console.WriteLine($"Random radius = {rnd.Next(10, 20)}");
+                for (int j = 0; j < arrFigures.GetLength(1); j++)
+                {
+                    if (i == 0)
+                        arrFigures[i, j] = new Rectangle(rnd.Next(5, 10), rnd.Next(5, 10));
+                    else if (i == 1)
+                        arrFigures[i, j] = new Triangle(rnd.Next(2, 5), rnd.Next(2, 5), rnd.Next(2, 5));
+                    else
+                        arrFigures[i, j] = new Circle(rnd.Next(10, 20));
+                    Console.WriteLine($"Периметр {arrFigures[i,j].Name} = {arrFigures[i,j].Perimeter()}");
+                }
             }
-            
+
+            var sSquare = CalcFullSquare(arrFigures);
+            Console.WriteLine($"Сумма площадей {sSquare}");
 
             Console.ReadKey();
         }
+
+        private static double CalcFullSquare(Figure[,] arrFigures)
+        {
+            var sSquare = 0;
+            for (int i = 0; i < arrFigures.GetLength(0); i++)
+            {
+                for (int j = 0; j < arrFigures.GetLength(1); j++)
+                {
+                    sSquare += (int) arrFigures[i, j].Square();
+                }
+            }
+            return sSquare;
+        }
+
 
         private static double CalcFullPerimetr(IEnumerable<Figure> figures)
         {

@@ -23,8 +23,8 @@ namespace GeometricFigures
 
         public override double Square()
         {
-            double p = (a+b+c)/2d;
-            double s = Math.Sqrt(p*(p-a)*(p-b)*(p-c));
+            var p = (a+b+c)/2d;
+            var s = Math.Sqrt(p*(p-a)*(p-b)*(p-c));
             return s;
         }
 
